@@ -49,7 +49,13 @@ function acm_customer_logs_register_routes(): void {
  * @return array|\WP_Error|\WP_REST_Response
  */
 function acm_customer_logs_handle_payload( \WP_REST_Request $request ) {
-	$data       = (array) $request->get_json_params();
+	$data   = (array) $request->get_json_params();
+	$status = $data['status'] ?? '';
+
+	if ( 'processing' !== $status ) {
+		return new \WP_REST_Response( null );
+	}
+
 	$post_data  = array( 'post_status' => 'publish' );
 	$model_data = array(
 		'orderId'   => "Order: {$data['id']}",
@@ -62,5 +68,5 @@ function acm_customer_logs_handle_payload( \WP_REST_Request $request ) {
 
 	insert_model_entry( 'customer', $model_data, $post_data );
 
-	return new \WP_REST_Response( null, 201 );
+	return new \WP_REST_Response( null );
 }
