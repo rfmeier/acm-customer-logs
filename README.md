@@ -1,5 +1,7 @@
 # Atlas Content Modeler Customer Logs WordPress Plugin
 
+[![Continuous Integration](https://github.com/rfmeier/acm-customer-logs/actions/workflows/main.yml/badge.svg)](https://github.com/rfmeier/acm-customer-logs/actions/workflows/main.yml)
+
 Log WooCommerce customer orders using the Atlas Content Modeler php api.
 
 **Do not use this in production! It is has not been secured.**
